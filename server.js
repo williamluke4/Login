@@ -105,7 +105,7 @@ function sendMessage(message, socket, elementID, webState,callback){
             console.log("The message is: " + message);
             console.log('stdout: ' + stdout);
             console.log('stderr: ' + stderr);
-            if( stdout.indexOf("RECIVED:") > -1 && callback == true){
+            if( stdout.indexOf("RECIVED:") > -1){
                 var state = stdout.split('RECIVED: ')[1].split('.')[0];
                 console.log("Sending Message Back To Client");
                 socket.emit(
@@ -120,7 +120,7 @@ function sendMessage(message, socket, elementID, webState,callback){
                     });
             }
 
-            else if(stdout.indexOf("NO REPLY") > -1 && callback == true) {
+            else if(stdout.indexOf("NO REPLY") > -1) {
                 console.log('NO REPLY' + elementID + ' ' + webState);
 
                 socket.emit(
@@ -132,7 +132,7 @@ function sendMessage(message, socket, elementID, webState,callback){
 
             }
 
-            if (error !== null && callback == true) {
+            if (error !== null) {
                 console.log('exec error: ' + error );
 
                 socket.emit(
