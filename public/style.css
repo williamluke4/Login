@@ -1,0 +1,85 @@
+
+body {
+	background-image: url("images/background.jpg");
+}
+.navbar-nav {
+	display: -webkit-box;
+}
+
+.pages{
+	position: absolute;
+	top: 58px;
+}
+
+nav * {
+	display: inline-flex;
+}
+.switches {
+	background-color: rgba(0, 0, 0, 0.62);
+}
+.area {
+	background-color: rgb(248, 248, 248);
+	padding: 10px;
+	text-align: center;
+	display: inline-block;
+	border: 1px solid black;
+	margin-top: 4px;
+}
+
+
+.commands .refresh {
+	top: 0px;
+	/* margin-bottom: 4px; */
+	height: 24px;
+	border-radius: 0px;
+}
+/*.digits .well {
+	text-align: center;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 2em;
+}*/
+.result {
+
+	text-align: right;
+	font-weight: bold;
+	font-size: 1em;
+}
+#send {
+	display: none;
+}
+h1 {
+	color: white;
+}
+#add {
+	position: fixed;
+	top: 53px;
+	background-color: white;
+	height:100%;
+	display: none;
+}
+button#menu1 {
+	height: 24px;
+	padding: 0;
+	border-radius: 0px;
+}
+
+.dropdown-menu {
+	right: 0px;
+}
+.glyphicon-remove {
+	position: absolute;
+	right: 0px;
+	height: 18px;
+	width: 18px;
+	padding: 0px;
+	border-radius: 0px;
+	border: none;
+}
+#custom {
+	position: fixed;
+	top: 53px;
+	background-color: white;
+	height:100%;
+	display: none;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Passport Local Mongoose Login Example</title>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/javascript/click.js"></script>
+    <script type="text/javascript" src="/javascript/nav.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="col-xs-12 col-lg-6 col-lg-offset-3">
+        <!--<a class="navbar-brand" href="#">WJQL</a>-->
+        <ul class="nav navbar-nav">
+                <li><a href="/">Home</a> </li>
+                {{#if user}}
+                    <li><a href="/logout">Log Out</a></li>
+                    <li><a href="/register">Register New User</a></li>
+                {{else}}
+
+                    <li><a href="/login">Log In</a></li>
+                {{/if}}
+            </ul>
+    </div>
+</nav>
+
+<div style="position: relative;top: 58px;">
+    {{{body}}}
+</div>
+</body>
+</html>

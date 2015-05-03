@@ -1,0 +1,39 @@
+
+{{#if user}}
+    <script type="text/javascript" src="/javascript/remoteClient.js"></script>
+<div class="pages col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+    <div class="page"  id="page2">
+        <h1>Home Automation</h1>
+        {{> page/dropdown}}
+        <!-- Switches -->
+        <div class="switches">
+
+
+            {{#each switches}}
+                <div class="area col-sm-4 col-xs-6">
+                    <h3>{{this.group}}</h3>
+                    {{> page/delete}}
+                    <div class="checkbox">
+                        <label>
+                            <input id="{{this.elementID}}" type="checkbox" data-id="{{this.dataID}}" data-toggleState="" data-toggle="toggle">
+                            Light Switch 1
+
+                            <div id="console-event"></div>
+                        </label>
+                    </div>
+                </div>
+            {{/each}}
+
+            <!--End Of Switches-->
+        </div>
+
+    </div>
+</div>
+<!-- End Of Page 2-->
+{{> page/add}}
+{{> page/custom}}
+{{else}}
+    <div class="container">
+        <h1>Kindly Fuck Off</h1>
+    </div>
+{{/if}}
