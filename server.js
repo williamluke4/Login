@@ -12,6 +12,7 @@ var exec = require('child_process');
 var LocalStrategy = require('passport-local').Strategy;
 var pkg = require('./package.json');
 
+
 var app = express();
 app.set('port', process.env.PORT || 3700);
 
@@ -97,7 +98,57 @@ app.use(function(err, req, res, next) {
 });
 
 
+function sendMessage(message, socket, elementID, webState,callback){
+    exec.execFile('../remote',
+        ['-m', message],
+        function (error, stdout, stderr) {
+            console.log("The message is: " + message);
+            console.log('stdout: ' + stdout);
+            console.log('stderr: ' + stderr);
+            if( stdout.indexOf("RECIVED:") > -1 && callback == true){
+                var state = stdout.split('RECIVED: ')[1].split('.')[0];
+                console.log("Sending Message Back To Client");
+                socket.emit(
+                    "callbackButton",
+                    {
+                        webstate: webState,
+                        message: "received",
+                        operation: message,
+                        state: state,
+                        switchID: elementID
 
+                    });
+            }
+
+            else if(stdout.indexOf("NO REPLY") > -1 && callback == true) {
+                console.log('NO REPLY' + elementID + ' ' + webState);
+
+                socket.emit(
+                    "failed",
+                    {
+                        webstate: webState,
+                        switchID: elementID
+                    });
+
+            }
+
+            if (error !== null && callback == true) {
+                console.log('exec error: ' + error );
+
+                socket.emit(
+                    "callbackError",
+                    {
+                        webstate: webState,
+                        error: error,
+                        switchID: elementID
+
+                    });
+
+            }
+
+
+        });
+}
 
 
 io.sockets.on('connection', function (socket) {
@@ -108,54 +159,4 @@ io.sockets.on('connection', function (socket) {
   });
 });
 
-function sendMessage(message, socket, elementID, webState,callback){
-  exec.execFile('../remote',
-      ['-m', message],
-      function (error, stdout, stderr) {
-        console.log("The message is: " + message);
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + stderr);
-        if( stdout.indexOf("RECIVED:") > -1 && callback == true){
-          var state = stdout.split('RECIVED: ')[1].split('.')[0];
-          console.log("Sending Message Back To Client");
-          socket.emit(
-              "callbackButton",
-              {
-                webstate: webState,
-                message: "received",
-                operation: message,
-                state: state,
-                switchID: elementID
 
-              });
-        }
-
-        else if(stdout.indexOf("NO REPLY") > -1 && callback == true) {
-          console.log('NO REPLY' + elementID + ' ' + webState);
-
-          socket.emit(
-              "failed",
-              {
-                webstate: webState,
-                switchID: elementID
-              });
-
-        }
-
-        if (error !== null && callback == true) {
-          console.log('exec error: ' + error );
-
-          socket.emit(
-              "callbackError",
-              {
-                webstate: webState,
-                error: error,
-                switchID: elementID
-
-              });
-
-        }
-
-
-      });
-}
