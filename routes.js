@@ -14,7 +14,9 @@ router.get('/', function(req, res) {
 });
 
 router.get('/register', function(req, res) {
-  res.render('register', {});
+  res.render('register', {
+    user: req.user
+  });
 });
 
 router.post('/register', function(req, res, next) {
