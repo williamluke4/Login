@@ -4,6 +4,7 @@
         <ul class="nav navbar-nav">
             <li><a href="/">Home</a> </li>
             {{#if user}}
+                <li>
                 <div class="dropdown userdropdown">
                     <li class="userbtn btn btn-default dropdown-toggle col-xs-6 col-sm-6" type="button" id="menu2" data-toggle="dropdown">Hello {{user.username}}
                         <span class="caret"></span></li>
@@ -14,6 +15,7 @@
 
                     </ul>
                 </div>
+                </li>
             {{else}}
 
                 <li><a href="/login">Log In</a></li>

@@ -4,6 +4,7 @@ body {
 }
 .navbar-nav {
 	display: -webkit-box;
+		width: 100%;
 }
 
 .pages{
@@ -92,7 +93,12 @@ button#menu1 {
 }
 .userbtn {
 	width: auto;
+	height: 34px;
+	margin: 7px 0px;
+	right: 0px;
+	position: absolute !important;
 }
+
 .userdropdown {
 	height: auto;
 	margin: 10px 0px;
