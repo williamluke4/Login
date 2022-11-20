@@ -20,7 +20,7 @@
     "passport": "0.2.x",
     "passport-local": "1.0.x",
     "passport-local-mongoose": "1.0.x",
-    "promise": "^7.0.1",
+    "promise": "^8.0.0",
     "semver": "^4.3.3",
     "serve-favicon": "~2.1.3",
     "socket.io": "^1.3.5"
